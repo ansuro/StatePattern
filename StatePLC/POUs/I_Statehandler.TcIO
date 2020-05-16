@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+  <Itf Name="I_Statehandler" Id="{6ad18ada-1fb5-48cb-8dc1-c2679983afa6}">
+    <Declaration><![CDATA[INTERFACE I_Statehandler
+]]></Declaration>
+    <Method Name="SetState" Id="{fefb3d48-6184-40f2-9ec0-ad0740b0c9d9}">
+      <Declaration><![CDATA[METHOD SetState : BOOL
+VAR_INPUT
+	eNewState: E_STATES;
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

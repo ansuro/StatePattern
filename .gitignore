@@ -1,0 +1,6 @@
+/_Boot/**
+/.vs/**
+/_Config/**
+/StatePLC/_CompileInfo/**
+/StatePLC/_Libraries/**
+StatePattern.project.~u

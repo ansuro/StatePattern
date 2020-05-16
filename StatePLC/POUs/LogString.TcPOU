@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+  <POU Name="LogString" Id="{f5b2e333-f0e5-4c09-b1d1-9c9fa6989ae9}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION LogString : BOOL
+VAR_INPUT
+	sString: T_MaxString;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[ADSLOGSTR(
+	msgCtrlMask := ADSLOG_MSGTYPE_HINT,
+	msgFmtStr := '%s',
+	strArg := sString
+);]]></ST>
+    </Implementation>
+    <LineIds Name="LogString">
+      <LineId Id="24" Count="3" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

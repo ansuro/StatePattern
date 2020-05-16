@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+  <POU Name="State2" Id="{e90cbb4f-15f1-4334-a8a3-9fa477e73284}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK State2 EXTENDS AbstractState
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Handle" Id="{5ace3522-1dad-456b-8124-c93d86626caf}">
+      <Declaration><![CDATA[METHOD Handle : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbTON(IN := TRUE, PT := T#7s);
+IF fbTON.Q THEN
+	LogString(sString := 'Timer in State 2 fired. Changing State to State 1.');
+	ipStatehandler.SetState(eNewState := E_STATES.eState1);
+	fbTON(IN := FALSE);
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="State2">
+      <LineId Id="13" Count="0" />
+    </LineIds>
+    <LineIds Name="State2.Handle">
+      <LineId Id="7" Count="1" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="4" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

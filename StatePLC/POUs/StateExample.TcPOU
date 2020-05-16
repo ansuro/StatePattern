@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+  <POU Name="StateExample" Id="{c5dbf8b5-3792-4102-8ec0-4477ddef9c6c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK StateExample IMPLEMENTS I_Statehandler
+VAR
+	// Interface pointer to THIS statehandler
+	ipSH: I_Statehandler := THIS^;
+	
+	// State FBs
+	fbState1: State1(ipSH);
+	fbState2: State2(ipSH);
+
+	// Interface pointer to the current state
+	ipState: I_State := fbState1;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF ipState <> 0 THEN
+	ipState.Handle();
+END_IF
+]]></ST>
+    </Implementation>
+    <Method Name="SetState" Id="{4bf7dc73-07df-4bcb-844d-3018a4efba39}">
+      <Declaration><![CDATA[METHOD SetState : BOOL
+VAR_INPUT
+	eNewState	: E_STATES;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE eNewState OF
+	E_STATES.eState1:
+		ipState := fbState1;
+		
+	E_STATES.eState2:
+		ipState := fbState2;
+
+	ELSE
+		ADSLOGSTR(msgCtrlMask := ADSLOG_MSGTYPE_ERROR, msgFmtStr := 'unknown state', strArg := '');
+
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="StateExample">
+      <LineId Id="17" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="18" Count="1" />
+    </LineIds>
+    <LineIds Name="StateExample.SetState">
+      <LineId Id="7" Count="1" />
+      <LineId Id="15" Count="1" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="19" Count="2" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

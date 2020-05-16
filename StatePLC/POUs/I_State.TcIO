@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+  <Itf Name="I_State" Id="{8e73192b-d2e1-43c8-ad43-720eb715c850}">
+    <Declaration><![CDATA[INTERFACE I_State
+]]></Declaration>
+    <Method Name="Handle" Id="{d70289f2-db71-41b6-941b-611f697e3b7b}">
+      <Declaration><![CDATA[METHOD PUBLIC Handle : BOOL
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>
